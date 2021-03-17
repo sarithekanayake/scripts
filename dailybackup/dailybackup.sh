@@ -1,6 +1,6 @@
 #!/bin/bash
 
-bucket=lsegtestbucket2021forlogbackp
+bucket=lsegbucketname
 rm -f error.log
 today=`date +'%d-%m-%Y'`
 _time=`date +'%T'`
