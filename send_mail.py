@@ -19,7 +19,7 @@ elif category=="Daily Backup" or category=="Web Server":
     msg['Subject'] = "{} script Failed".format(category)
     with open(respnose,'r') as file:
         data = file.read()
-    body = """{} script is failed.\nFollowing are the outputs of {} file.\nErrors are on,\n\n{}\nof the dailybackup.sh script""".format(category,respnose,data)
+    body = """{} script is failed.\nFollowing are the outputs of {} file.\nErrors are on,\n\n{}\nof the script""".format(category,respnose,data)
 
 msg.attach(MIMEText(body, 'plain'))
 
