@@ -3,6 +3,8 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 import sys 
 
+errlog="/home/ec2-user/scripts/dailybackup/error.log"
+
 fromaddr="sarithekanayaka@gmail.com"
 password = "sarith123"
 toaddr="sarithekanayake@gmail.com"
@@ -16,15 +18,16 @@ msg['Subject'] = "{} script Failed".format(script)
 if script=="Web Server":
     body = """{} script is getting {} code response""".format(script,respnose)
 elif script=="Daily Backup":
-    with open('error.log','r') as file:
+    with open(errlog,'r') as file:
         data = file.read()
     body = """{} script is failed.\nFollowing are the outputs of {} file.\nErrors are on,\n\n{}\nof the dailybackup.sh script""".format(script,respnose,data)
 
 msg.attach(MIMEText(body, 'plain'))
 
-connection = smtplib.SMTP('smtp.gmail.com')
+connection = smtplib.SMTP()
+connection.connect('email-smtp.ap-southeast-1.amazonaws.com',587)
 connection.starttls()
-connection.login(user=fromaddr, password= password)
+connection.login('AKIAZXI7XNIDH4XUNA56','BKJUpsGvX+Q0RSCoOEo46nWZSTHmoJ+BZ6N0zVykKqQ7')
 text = msg.as_string()
-connection.sendmail(fromaddr, toaddr, text)
+connection.sendmail(fromaddr ,toaddr,text)
 connection.close()
