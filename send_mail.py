@@ -5,8 +5,7 @@ import sys
 
 errlog="/home/ec2-user/scripts/dailybackup/error.log"
 
-fromaddr="sarithekanayaka@gmail.com"
-password = "sarith123"
+fromaddr="ec2scriptnotification@gmail.com"
 toaddr="sarithekanayake@gmail.com"
 script=sys.argv[1]
 respnose=sys.argv[2]
