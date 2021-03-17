@@ -5,6 +5,7 @@ rm -f error.log
 today=`date +'%d-%m-%Y'`
 _time=`date +'%T'`
 _ip=`cut -d '.' -f 1 /etc/hostname`
+
 error_report(){
     echo "Line number $1" >> /home/ec2-user/scripts/dailybackup/error.log
 }
@@ -24,7 +25,7 @@ aws s3 cp ${today}-${_ip}.tgz s3://$bucket
 if [ -f "error.log" ]
 then
     echo "${_time} sending error mail"
-    python ../send_mail.py "Daily Backup" "error.log"
+    python ../send_mail.py "Daily Backup" "$PWD/error.log"
     rm -f ${today}-${_ip}.tgz
     exit 1
 else
