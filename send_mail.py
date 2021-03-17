@@ -13,7 +13,7 @@ msg['To'] = toaddr
 
 if category=="Response Code":
     msg['Subject'] = "Web Server response error"
-    body = """{} script is getting {} code response""".format(category,respnose)
+    body = """Web Server script is getting {} code response""".format(respnose)
     
 elif category=="Daily Backup" or category=="Web Server":
     msg['Subject'] = "{} script Failed".format(category)
